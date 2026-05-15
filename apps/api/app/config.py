@@ -12,6 +12,11 @@ class Settings(BaseSettings):
     app_name: str = "seeker-api"
     env: str = "dev"
     qdrant_url: str = "http://localhost:6333"
+    qdrant_collection: str = "seeker"
+    embedding_model: str = "gemini-embedding-001"
+    embedding_dim: int = 3072
+    chunk_size: int = 512
+    chunk_overlap: int = 64
     postgres_url: str = "postgresql://seeker:seeker@localhost:5432/seeker"
     groq_api_key: str | None = None
     gemini_api_key: str | None = None
