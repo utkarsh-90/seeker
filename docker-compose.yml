@@ -3,32 +3,28 @@ services:
     image: qdrant/qdrant:latest
     ports:
       - "6333:6333"
+      - "6334:6334"
     volumes:
       - qdrant_data:/qdrant/storage
 
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: seeker
       POSTGRES_USER: seeker
       POSTGRES_PASSWORD: seeker
+      POSTGRES_DB: seeker
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U seeker -d seeker"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
-  # langfuse:
-  #   image: langfuse/langfuse:latest
-  #   depends_on:
-  #     - postgres
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     DATABASE_URL: postgresql://seeker:seeker@postgres:5432/seeker
-  #   volumes:
-  #     - langfuse_data:/app/data
+  # enabled in phase 11
 
 volumes:
   qdrant_data:
   postgres_data:
-  # langfuse_data:
