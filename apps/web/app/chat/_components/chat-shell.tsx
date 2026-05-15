@@ -2,9 +2,6 @@
 
 import { useState } from "react";
 
-import { Plus } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DEFAULT_MODEL_ID } from "@/lib/models";
 import { getMockMessages } from "@/lib/mock-messages";
@@ -77,20 +74,11 @@ export function ChatShell() {
       <div className="flex h-dvh w-full overflow-hidden bg-background text-foreground">
         <Sidebar onNewChat={handleNewChat} />
         <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-          <header className="flex shrink-0 items-center justify-between gap-4 border-b border-border px-6 py-4">
+          <header className="flex shrink-0 items-center border-b border-border px-6 py-4">
             <ModelPicker
               selectedModelId={selectedModelId}
               onChange={handleModelChange}
             />
-            <Button
-              type="button"
-              variant="secondary"
-              className="shrink-0 gap-2 rounded-lg"
-              onClick={handleNewChat}
-            >
-              <Plus className="size-4" />
-              New chat
-            </Button>
           </header>
           <div className="min-h-0 flex-1">
             <MessageList messages={messages} />

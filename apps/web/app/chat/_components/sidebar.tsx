@@ -1,5 +1,6 @@
 import { Plus, Settings } from "lucide-react";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -51,7 +52,9 @@ export function Sidebar({ onNewChat }: { onNewChat: () => void }) {
         </ul>
       </div>
       <div className="mt-auto flex items-center justify-between gap-2 border-t border-border px-4 py-3">
-        <span className="text-[10px] text-muted-foreground">dev build</span>
+        <Badge variant="secondary" className="text-xs font-normal">
+          dev
+        </Badge>
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
