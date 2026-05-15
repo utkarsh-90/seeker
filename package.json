@@ -1,0 +1,18 @@
+{
+  "name": "seeker",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "format": "turbo run //#format:root",
+    "clean": "turbo run //#clean:root",
+    "format:root": "prettier --write .",
+    "clean:root": "rm -rf .turbo apps/web/.next apps/web/.turbo"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "turbo": "^2.5.4"
+  }
+}
